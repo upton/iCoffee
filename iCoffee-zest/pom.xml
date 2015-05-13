@@ -60,6 +60,12 @@
 			<artifactId>spymemcached</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.11</artifactId>
+			<version>0.8.2.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
