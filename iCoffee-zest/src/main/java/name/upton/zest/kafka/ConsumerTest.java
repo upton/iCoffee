@@ -31,8 +31,8 @@ public class ConsumerTest {
         ConsumerConnector connector = Consumer.createJavaConsumerConnector(consumerConfig);
 
         Map<String, Integer> topics = new HashMap<String, Integer>();
-        topics.put("AAA", 2);
-        topics.put("BBB", 2);
+        topics.put("AAA", 1);
+        topics.put("BBB", 1);
 
         final ExecutorService aaaExecutor = Executors.newFixedThreadPool(2, new ThreadFactory() {
             private AtomicInteger counter = new AtomicInteger(0);
@@ -56,16 +56,24 @@ public class ConsumerTest {
         Map<String, List<KafkaStream<byte[], byte[]>>> topicStreams = connector.createMessageStreams(topics);
 
         List<KafkaStream<byte[], byte[]>> aaaStreams = topicStreams.get("AAA");
+        int a = 0;
         for (final KafkaStream<byte[], byte[]> stream : aaaStreams) {
             MyConsumer consumer = new MyConsumer(stream);
             aaaExecutor.submit(consumer);
+            
+            a++;
+            System.out.println("start aaaStreams " + a);
         }
 
         // 状态消息的数据流
         List<KafkaStream<byte[], byte[]>> bbbStreams = topicStreams.get("BBB");
+        int b = 0;
         for (final KafkaStream<byte[], byte[]> stream : bbbStreams) {
             MyConsumer consumer = new MyConsumer(stream);
             bbbExecutor.submit(consumer);
+            
+            b++;
+            System.out.println("start bbbStreams " + b);
         }
 
         // 系统退出时让线程池停止

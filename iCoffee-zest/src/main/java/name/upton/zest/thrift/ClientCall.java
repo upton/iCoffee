@@ -1,6 +1,6 @@
 package name.upton.zest.thrift;
 
-import name.upton.zest.thrift.log.Scribe.Client;
+import name.upton.zest.thrift.multi.Client;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
@@ -40,7 +40,7 @@ public class ClientCall implements Runnable {
             e.printStackTrace();
         }
 
-        Client client = new Client(protocol);
+        Client client = null;//new Client(protocol);
         while (true) {
 
             try {
@@ -48,15 +48,15 @@ public class ClientCall implements Runnable {
             } catch (InterruptedException e) {
             }
 
-            try {
-                System.out.println(client.getOption("1234"));
-                if(!ip.equals(client.getOption("1234"))){
-                    System.out.println("bad~~~~~~~~~~~~~~~~");
-                }
-            } catch (TException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+//            try {
+////                System.out.println(client.getOption("1234"));
+////                if(!ip.equals(client.getOption("1234"))){
+////                    System.out.println("bad~~~~~~~~~~~~~~~~");
+////                }
+//            } catch (TException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
         }
     }
 

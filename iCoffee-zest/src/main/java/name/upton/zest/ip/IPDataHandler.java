@@ -19,16 +19,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
+import org.springframework.util.StringUtils;
 
 public class IPDataHandler {
 	private static String IP_DATA_PATH = "17monipdb.dat";
@@ -107,7 +107,7 @@ public class IPDataHandler {
 
 	
 	public static String findGeography(String address){
-		if (StringUtils.isBlank(address)) {
+		if (StringUtils.isEmpty(address)) {
 			return "illegal address";
 		}
 		
