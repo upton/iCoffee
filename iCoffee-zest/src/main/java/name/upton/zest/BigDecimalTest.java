@@ -9,6 +9,9 @@ public class BigDecimalTest {
         BigDecimal commission = new BigDecimal(888).multiply(new BigDecimal(0)).setScale(2, RoundingMode.HALF_UP);
         
         System.out.println(commission);
+        
+        String name = "zhe" + ((1 << 3) * 100) + ".com";
+        System.out.println(name);
     }
 
 }
