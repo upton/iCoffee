@@ -39,10 +39,7 @@ public class Hello {
         
         System.out.println(i == j);
         
-        Integer k = null;
-        
-        if(k == 5){
-            System.out.println(k);
-        }
+                
+        System.out.println(String.format("%04d", 12));
     }
 }

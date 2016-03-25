@@ -42,6 +42,13 @@ public class TestMain {
 
         System.out.println(RUNPATH);
         System.out.println(RUNPATH_HASH);
+        
+        
+        int retryCount = 3;
+        do {
+            System.out.println("=======================");
+            retryCount--;
+        } while (retryCount > 0);
     }
 
     public static void swapInt(int a, int b) {
