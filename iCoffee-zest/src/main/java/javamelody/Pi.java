@@ -3,8 +3,7 @@ package javamelody;
 import java.math.BigInteger;
 
 /**
- * Compute PI just to have something to do, from
- * http://rosettacode.org/wiki/Pi#Java
+ * Compute PI just to have something to do, from http://rosettacode.org/wiki/Pi#Java
  */
 public class Pi {
     private static final BigInteger TWO = BigInteger.valueOf(2);
