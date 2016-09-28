@@ -29,12 +29,8 @@ public class TestOKhttp {
                             Response response = client.newCall(request).execute();
 
                             if (response.isSuccessful()) {
-                                String body = response.body().string();
-                                if (!"get_config".equals(body)) {
-                                    System.out.println("get_config != " + body);
-                                } else {
-                                    count1.incrementAndGet();
-                                }
+                                response.body().close();
+                                count1.incrementAndGet();
                             } else {
                                 System.out.println("get_config error");
                             }
@@ -56,12 +52,8 @@ public class TestOKhttp {
                             Response response = client.newCall(request).execute();
 
                             if (response.isSuccessful()) {
-                                String body = response.body().string();
-                                if (!"get_server_nodes".equals(body)) {
-                                    System.out.println("======get_server_nodes != " + body);
-                                } else {
-                                    count2.incrementAndGet();
-                                }
+                                response.body().close();
+                                count2.incrementAndGet();
                             } else {
                                 System.out.println("======get_server_nodes error");
                             }

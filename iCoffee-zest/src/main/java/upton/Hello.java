@@ -8,7 +8,7 @@ public class Hello {
         return "hello " + name;
     }
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException{
         List<String> urls = new ArrayList<String>(){
             {
                 add("1");
@@ -41,5 +41,6 @@ public class Hello {
         
                 
         System.out.println(String.format("%04d", 12));
+        Thread.sleep(Integer.MAX_VALUE);
     }
 }
