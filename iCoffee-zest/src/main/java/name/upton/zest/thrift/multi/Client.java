@@ -2,11 +2,7 @@ package name.upton.zest.thrift.multi;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
-import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
-
-import com.abc.Monitor;
-import com.xyz.Hello;
 
 public class Client {
 
@@ -15,15 +11,15 @@ public class Client {
         transport.open();
 
         TBinaryProtocol protocol = new TBinaryProtocol(transport);
+//
+//        TMultiplexedProtocol mp = new TMultiplexedProtocol(protocol, "Hello");
+//        Hello.Client helloService = new Hello.Client(mp);
+//
+//        TMultiplexedProtocol mp2 = new TMultiplexedProtocol(protocol, "Monitor");
+//        Monitor.Client monitorService = new Monitor.Client(mp2);
 
-        TMultiplexedProtocol mp = new TMultiplexedProtocol(protocol, "Hello");
-        Hello.Client helloService = new Hello.Client(mp);
-
-        TMultiplexedProtocol mp2 = new TMultiplexedProtocol(protocol, "Monitor");
-        Monitor.Client monitorService = new Monitor.Client(mp2);
-
-        System.out.println(helloService.hi("upton"));
-        System.out.println(monitorService.test());
+//        System.out.println(helloService.hi("upton"));
+//        System.out.println(monitorService.test());
     }
 
 }

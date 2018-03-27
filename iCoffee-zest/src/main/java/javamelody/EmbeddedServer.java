@@ -3,9 +3,9 @@ package javamelody;
 import java.util.EnumSet;
 import java.util.Map;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 
+import org.eclipse.jetty.server.DispatcherType;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
@@ -22,16 +22,19 @@ import net.bull.javamelody.Parameter;
 public class EmbeddedServer {
     /**
      * Start the server with a http port and optional javamelody parameters.
-     * @param port Http port
-     * @param parameters Optional javamelody parameters
-     * @throws Exception e
+     * 
+     * @param port
+     *            Http port
+     * @param parameters
+     *            Optional javamelody parameters
+     * @throws Exception
+     *             e
      */
     public static void start(int port, Map<Parameter, String> parameters) throws Exception {
         // Init jetty
         final Server server = new Server(port);
         final ContextHandlerCollection contexts = new ContextHandlerCollection();
-        final ServletContextHandler context = new ServletContextHandler(contexts, "/",
-                ServletContextHandler.SESSIONS);
+        final ServletContextHandler context = new ServletContextHandler(contexts, "/", ServletContextHandler.SESSIONS);
 
         final Filter monitoringFilter = new net.bull.javamelody.MonitoringFilter();
         final FilterHolder filterHolder = new FilterHolder(monitoringFilter);
@@ -42,8 +45,7 @@ public class EmbeddedServer {
                 filterHolder.setInitParameter(parameter.getCode(), value);
             }
         }
-        context.addFilter(filterHolder, "/*",
-                EnumSet.of(DispatcherType.INCLUDE, DispatcherType.REQUEST));
+        context.addFilter(filterHolder, "/*", EnumSet.of(DispatcherType.INCLUDE, DispatcherType.REQUEST));
 
         final RequestLogHandler requestLogHandler = new RequestLogHandler();
         contexts.addHandler(requestLogHandler);

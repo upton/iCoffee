@@ -21,14 +21,14 @@ public class Main {
         // parameters.put(Parameter.AUTHORIZED_USERS, "admin:pwd");
 
         // to change the default storage directory:
-        // parameters.put(Parameter.STORAGE_DIRECTORY, "/tmp/javamelody");
+        parameters.put(Parameter.STORAGE_DIRECTORY, "/tmp/javamelody");
 
         // to change the default resolution in seconds:
-        // parameters.put(Parameter.RESOLUTION_SECONDS, "60");
+        parameters.put(Parameter.RESOLUTION_SECONDS, "60");
 
         // to hide all statistics such as http and sql, except logs:
-        // parameters.put(Parameter.DISPLAYED_COUNTERS, "log");
-        // parameters.put(Parameter.NO_DATABASE, "true");
+        parameters.put(Parameter.DISPLAYED_COUNTERS, "log");
+        parameters.put(Parameter.NO_DATABASE, "true");
 
         // enable hotspots sampling with a period of 1 second:
         parameters.put(Parameter.SAMPLING_SECONDS, "1.0");
@@ -41,10 +41,5 @@ public class Main {
         System.out.println("");
         System.out.println("For the reports, you can browse http://localhost:8080/");
         System.out.println("");
-
-        // compute PI just to have something to do
-        System.out.print("PI = ");
-        final Pi p = new Pi();
-        p.calcPiDigits();
     }
 }
